@@ -88,8 +88,7 @@ def WakeOnLan(mac_address, broadcast_address):
 
 def stringX(execString, shell=False, wait=True, decode='utf-8', bufsize=1):
     '''Runs a system command without forking from python.
-    Able to return output of a given command to interpreter.
-    Returns a generator object'''    
+    Able to return output of a given command to interpreter'''    
     from shlex import split as shlexSplit
     import subprocess as sp    
     Return = [[]]

@@ -49,13 +49,12 @@ def hostUp(host, shell=False):
     from platform import system as OperSys
     operatingSystem = OperSys().lower()
     isHostUp = False
-
+    shell = shell
+    
     if (operatingSystem == 'windows'):
         ping_str = "-n 1"
-        shell = shell
     elif (operatingSystem == 'darwin'):
         ping_str = "-c 1"
-        shell = shell
 
     args = "ping {} {}".format(ping_str, host)
     output = stringX(args, shell=shell)[0]

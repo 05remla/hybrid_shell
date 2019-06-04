@@ -36,13 +36,6 @@ class threadz(object):
             thread.join()
 
 
-def posix_path(string):
-    '''Makes path passed to function compatible with 'nix systems
-    as well as the interpreter.'''
-    import posixpath
-    return string.replace(os.path.sep, posixpath.sep)
-
-
 def ps_aux():
     import psutil
 
@@ -59,10 +52,13 @@ def ps_aux():
 def touch(fname, times=None):
     '''Updates the modified time of a file without changing the
     contents of it much like the touch command in 'nix systems.'''
-    with open(fname, 'a'):
-        os.utime(fname, times)
+    try:
+        with open(fname, 'a'):
+            os.utime(fname, times)
+    except:
+        print('make the file')
 
-
+        
 def cat(File, numbered=False):
     '''Displays contents of a file to interpreter much like the
     cat command in 'nix systems.'''

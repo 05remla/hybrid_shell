@@ -6,12 +6,17 @@ import os
 
 
 class threadz(object):
-    '''wrapper for multithreading and multiprocessing - 
-    t = threadz()
-    t.run(function, 
-          function args (tuple), 
-          number of threads/processes,
-          method 0=threading/1=processing)'''
+    '''wrapper for multithreading:
+    ARGS: 
+       1. function
+       2. function args as tuple
+       3. number of threads as int
+    
+    Ex.
+       t = threadz()
+       t.run(function, 
+             args, 
+             number of threads)'''
           
     result = dict()  
     

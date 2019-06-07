@@ -11,6 +11,8 @@ class threadz(object):
        1. function
        2. function args as tuple
        3. number of threads as int
+       
+    output of threadz stored in (threadz object).result
 
     Ex.
        t = threadz()
@@ -79,7 +81,7 @@ def cat(File, numbered=False):
     return contents
 
 
-def hostUp(host, shell=False):
+def alive(host, shell=False):
     from fnmatch import fnmatch
     from platform import system as OperSys
     operatingSystem = OperSys().lower()
@@ -102,7 +104,7 @@ def hostUp(host, shell=False):
     return isHostUp
 
 
-def WakeOnLan(mac_address, broadcast_address):
+def wakeonlan(mac_address, broadcast_address):
     import struct, socket
 
     addr_byte = mac_address.split(':')
@@ -120,7 +122,7 @@ def WakeOnLan(mac_address, broadcast_address):
     s.close()
 
 
-def stringX(execString, shell=False, wait=True, decode='ascii', bufsize=1):
+def stringx(execString, shell=False, wait=True, decode='ascii', bufsize=1):
     '''Runs a system command without forking from python.
     Able to return output of a given command to interpreter'''
     from shlex import split as shlexSplit
@@ -193,7 +195,6 @@ def ls(query='.', ret=False):
       if (os.path.isfile(item)): color = '\033[92m'
       elif (os.path.isdir(item)): color = '\033[94m'
       if Path(item).is_symlink(): color = '\033[96m'
-
       item = os.path.split(item)[1]
 
       if (col == 1):
@@ -202,7 +203,6 @@ def ls(query='.', ret=False):
       else:
         print('{}{}{}'.format(
             color, item, (' ' * (buffer - len(item)))))
-
 
     long = ((max(len(i) for i in items)) + 4)
     switch = int(round((len(items)+0.5)/2))

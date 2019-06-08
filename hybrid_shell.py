@@ -6,43 +6,28 @@ import os
 
 
 class threadz(object):
-    '''wrapper for multithreading:
-    ARGS:
-       1. function
-       2. function args as tuple
-       3. number of threads as int
-       
-    output of threadz stored in (threadz object).result
-
-    Ex.
-       t = threadz()
-       t.run(function,
-             args,
-             number of threads)'''
-
-    result = dict()
-
     def __init__(self):
-        pass
+        self.result = dict()
+      
+    def wrapper(obj, func, key, *args, **kwargs):
+        #print('[wrapper args,kwargs]: {},{}'.format(*args,kwargs))
+        obj.result[key] = func(*args, **kwargs)
 
-    def wrapper(obj, func, key, args):
-        obj.result[key] = func(args)
-
-    def run(self, function, targs, runs=1):
+    def run(self, function, runs=1, *args, **kwargs):
         _threads_ = []
 
         for i in range(runs):
-            pargs = (self, function, str(i),)
-            all_args = pargs + ((targs),)
-            _threads_.append(threading.Thread(target=threadz.wrapper, args=all_args))
+            wrapper_args = (self, function, str(i),)
+            all_args = wrapper_args + args              
+            _threads_.append(threading.Thread(target=threadz.wrapper, args=all_args, kwargs=kwargs))
 
         for thread in _threads_:
             thread.start()
 
         for thread in _threads_:
             thread.join()
-
-
+            
+            
 def ps_aux():
     import psutil
 

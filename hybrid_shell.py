@@ -2,6 +2,7 @@ from shutil import copy as cp
 from shutil import move as mv
 from os import getcwd as pwd
 from os import chdir as cd
+import threading
 import os
 
 
@@ -10,7 +11,6 @@ class threadz(object):
         self.result = dict()
       
     def wrapper(obj, func, key, *args, **kwargs):
-        #print('[wrapper args,kwargs]: {},{}'.format(*args,kwargs))
         obj.result[key] = func(*args, **kwargs)
 
     def run(self, function, runs=1, *args, **kwargs):
@@ -18,8 +18,8 @@ class threadz(object):
 
         for i in range(runs):
             wrapper_args = (self, function, str(i),)
-            all_args = wrapper_args + args              
-            _threads_.append(threading.Thread(target=threadz.wrapper, args=all_args, kwargs=kwargs))
+            thread_args = wrapper_args + args              
+            _threads_.append(threading.Thread(target=threadz.wrapper, args=thread_args, kwargs=kwargs))
 
         for thread in _threads_:
             thread.start()

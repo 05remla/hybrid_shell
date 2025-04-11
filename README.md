@@ -20,9 +20,9 @@ ipaddress
 **library utility/examples:**   
 **hs**   
 - easily color output with hybrid_shell.hs.ANSI
-  '{}this is blue text.{}'.format(ANSI.COLOR['FG_blue'], ANSI.COLOR['ST_reset'])
+  '{}this is blue text.{}'.format(ANSI.COLOR['FG_blue'], ANSI.COLOR['ST_reset'])   
   -or-   
-  cformat('{BG_red}the background is red{ST_reset}')
+  cformat('{BG_red}the background is red{ST_reset}')   
 
 **net_tools**   
 - running net_tools.netinfo.config_all() will populate/initialize net_tools.netinfo.data

@@ -13,6 +13,10 @@ cformat = ANSI.format
 
 
 def boolPing(addr):
+    '''
+        NEEDS WORK & DOCUMENTATION
+        -add compatability for linux
+    '''
     zx = sx('ping {} -n 1 -w 2'.format(addr))[0]
     for i in zx:
         if i.lower().startswith('reply from {}'.format(addr)):
@@ -22,6 +26,7 @@ def boolPing(addr):
 
 def wakeonlan(mac_address, broadcast_address):
     '''
+        NEEDS WORK & DOCUMENTATION
     '''
     addr_byte = mac_address.split(':')
     hw_addr = struct.pack(
@@ -40,6 +45,9 @@ def wakeonlan(mac_address, broadcast_address):
 
 
 class ip_check:
+    '''
+            NEEDS WORK & DOCUMENTATION
+    '''
     def ip_in_prefix(ip_address, net='data'):
         if (net == 'data'):
             try:
@@ -78,7 +86,7 @@ for i in list(data.keys()):
 
 class netinfo:
     '''
-        if iface not defined run iface selector
+        NEEDS WORK & DOCUMENTATION        
     '''
     data = {'ip4': 0, 'snm': 0, 'net': 0, 'mac': 0, 'gw': 0}
 
@@ -120,12 +128,18 @@ class netinfo:
         #        pass
 
     def config_iface_indx():
+        '''
+            windows specific method
+        '''
         if not sys.platform == 'win32':
             return
         netinfo.data['iface_indx'] = netinfo.data['obj'].index
         # obj = powershell Get-NetAdapter -InterfaceIndex XXX
 
     def config_gw():
+        '''
+            NEEDS WORK & DOCUMENTATION
+        '''    
         # FiX NOT RELIABLE
         # pkt = IP(dst='8.8.8.8', ttl=1, id=RandShort())/TCP(flags=0x2)
         # ans = sr1(pkt, timeout=3, verbose=0)

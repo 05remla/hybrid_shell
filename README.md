@@ -19,7 +19,7 @@ ipaddress
 
 **library utility/examples:**   
 **hs**   
-- easily color output with hybrid_shell.hs.ANSI
+- easily color output with hybrid_shell.hs.ANSI   
   '{}this is blue text.{}'.format(ANSI.COLOR['FG_blue'], ANSI.COLOR['ST_reset'])   
   -or-   
   cformat('{BG_red}the background is red{ST_reset}')   

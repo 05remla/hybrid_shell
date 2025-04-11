@@ -86,7 +86,11 @@ for i in list(data.keys()):
 
 class netinfo:
     '''
-        NEEDS WORK & DOCUMENTATION        
+        NEEDS WORK & DOCUMENTATION
+        + NetTools.netinfo.config_all() is interactive
+        + running NetTools.netinfo.config_all() will attempt
+          to extract all (specified) iface relavent data
+          and will be stored in NetTools.netinfo.data
     '''
     data = {'ip4': 0, 'snm': 0, 'net': 0, 'mac': 0, 'gw': 0}
 

@@ -2,10 +2,10 @@
 **Description:**
 Python library for common operating system shell (cmd, powershell, bash) functions (plus extra)
 
-**Required python packages:** 
+**Required python packages:** \n
 scapy (scapy is required for net_tools module)
 
-**Python packages utilized (site-packages):**
+**Python packages utilized (site-packages):** \n
 shutil
 os
 time

@@ -74,45 +74,6 @@ class console:
         print('{} {}'.format(console.sym[mode], msg))
 
         
-class threadz(object):
-    '''wrapper for multithreading:
-    ARGS:
-       1. function
-       2. function args as tuple
-       3. number of threads as int
-
-    output of threadz stored in (threadz object).result
-
-    Ex.
-       t = threadz()
-       t.run(function,
-             args,
-             number of threads)'''
-
-    result = dict()
-
-    def __init__(self):
-        pass
-
-    def wrapper(obj, func, key, args):
-        obj.result[key] = func(args)
-
-    def run(self, function, targs, runs=1, wait=False):
-        _threads_ = []
-
-        for i in range(runs):
-            pargs = (self, function, str(i),)
-            all_args = pargs + ((targs),)
-            _threads_.append(threading.Thread(target=threadz.wrapper, args=all_args))
-
-        for thread in _threads_:
-            thread.start()
-
-        if wait:
-            for thread in _threads_:
-                thread.join()
-
-
 def touch(fname, times=None):
     '''Updates the modified time of a file without changing the
     contents of it much like the touch command in 'nix systems.'''
@@ -125,8 +86,8 @@ def touch(fname, times=None):
 
 def cat(File, numbered=False, less=True, ret=False):
     '''
-        Displays contents of a file to interpreter much like the
-        cat command in 'nix systems.
+        Displays/returns contents of a file to interpreter 
+        much like the the cat command in 'nix systems.
     '''
     if less:
         term_rows = os.get_terminal_size()[1]
@@ -159,19 +120,11 @@ def cat(File, numbered=False, less=True, ret=False):
 
     if ret:
         return ret_list
-
-
-# def proj_path():
-#     if getattr(sys, 'frozen', False):
-#         progDir = os.path.dirname(sys.executable)
-#     else:
-#         progDir = os.path.dirname(os.path.realpath(__file__))
-#     return(progDir)
     
 
 def time_stamp(sdate=False, stime=True, fs_mode=True):
     '''
-        WORK HERE!
+        NEEDS WORK & DOCUMENTATION
     '''
     tmp = localtime()
     timestamp = ''
@@ -268,6 +221,9 @@ def genx(execString, shell=None, decode='ascii'):
 
 
 def which(exe):
+    '''
+        NEEDS WORK & DOCUMENTATION
+    '''
     ret = []
     for i in os.environ['PATH'].split(';'):
         try:
@@ -282,7 +238,7 @@ def which(exe):
 
 def find(pattern, searchpath, sensitive=False, recursive=True, verbose=False):
     '''Returns matching items of a query. "pattern" must match "item(s)"
-    Capable of searching directories as well as lists implicitly.'''
+    Capable of searching directories as well as lists.'''
     results = list()
     if not sensitive:
         pattern = pattern.lower()
@@ -318,6 +274,7 @@ def find(pattern, searchpath, sensitive=False, recursive=True, verbose=False):
 
 class ls_vars:
     '''
+        NEEDS WORK & DOCUMENTATION
     define ls settings
         func:
         colors:
@@ -334,6 +291,7 @@ class ls_vars:
 
 def ls(_dir='.', atribs=None, tree=False, func=None, colors=None, end='\n'):
     '''
+        NEEDS WORK & DOCUMENTATION
     args:
         _dir :
         atribs :

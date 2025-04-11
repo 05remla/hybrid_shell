@@ -5,7 +5,7 @@ Python library for common operating system shell (cmd, powershell, bash) functio
 **Required python packages:**   
 scapy (scapy is required for net_tools module)
 
-**Python packages utilized (site-packages):**   
+**Python packages utilized (dist builtins):**   
 shutil   
 os   
 time   

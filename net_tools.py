@@ -106,13 +106,13 @@ class netinfo:
         for i in range(len(iface_objs)):
             print('{}. {} {}'.format(i, iface_objs[i].name, iface_objs[i].ip))
 
-        netinfo.data['obj'] = iface_objs[int(
+        netinfo.data['scapy_obj'] = iface_objs[int(
             input(cformat('{FG_green}enter iface number{ST_reset}: ')))]
-        netinfo.data['iface'] = netinfo.data['obj'].name
+        netinfo.data['iface'] = netinfo.data['scapy_obj'].name
 
     def config_ip4_and_snm():
-        netinfo.data['ip4'] = netinfo.data['obj'].ip
-        netinfo.data['mac'] = netinfo.data['obj'].mac
+        netinfo.data['ip4'] = netinfo.data['scapy_obj'].ip
+        netinfo.data['mac'] = netinfo.data['scapy_obj'].mac
         net = 0
         if sys.platform == 'win32':
             cidr = sx('powershell (Get-NetIPAddress -IPAddress {}).PrefixLength'.format(netinfo.data['ip4']))[0][0]
@@ -137,7 +137,7 @@ class netinfo:
         '''
         if not sys.platform == 'win32':
             return
-        netinfo.data['iface_indx'] = netinfo.data['obj'].index
+        netinfo.data['iface_indx'] = netinfo.data['scapy_obj'].index
         # obj = powershell Get-NetAdapter -InterfaceIndex XXX
 
     def config_gw():
